@@ -1,0 +1,56 @@
+from sets import Set
+
+def is_valid_solution(grid):
+  print "test" 
+  if len(grid)!=81:
+      return False
+  
+  # make a set for the row 
+  i=0
+  row = []
+  
+  for i in xrange(9):
+    row.append([])
+    for j in xrange(9):
+      row[i].append(0)
+  
+
+  rowset = [set() for index in xrange(9)]
+  column = [set() for index in xrange(9)]
+ 
+  # check for the row  
+  offset,i,j=0,0,0
+  
+  while j < 9:  #iterate through the row sets 
+    while i < 9: # iterate though the grid variable 
+      print grid[offset+i] 
+      if  grid[offset+i] in rowset[j]:
+        return False
+      else:
+        row[j][i]=grid[offset+i]
+        rowset[j].add(grid[offset+i])
+        i+=1
+    offset+=9
+    i=0
+    print "row %s is" % j 
+    print row
+    print "\n"
+    j+=1
+    
+ # check for the column 
+ 
+  i,j=0,0
+  while i<0: #iterate through the colum set 
+    while j<0: #iterate through the row set 
+      num=row[i][j]
+      if num in column[i]:
+        return False
+      else:
+        column[i].add(num)
+        j+=1
+    print "column is \n" 
+    print column[j] 
+    print "\n" 
+    i+=1
+  
+  return True

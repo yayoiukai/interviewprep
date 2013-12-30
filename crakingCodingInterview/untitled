@@ -1,0 +1,22 @@
+class node:
+	def __init__(self):
+		self.data=None
+		self.child=None
+		self.parent=None
+
+class multi_tree:
+	def __init__(self):
+		root=node()
+		self.cur_node=root
+
+	def add_child(self,data):
+		new_node=node() #create a new node
+		new_node.data=data
+		new_node.parent=self
+		new_node.child=None
+		
+	def list_print(self):
+		node=self.cur_node
+		while node:
+			print node.data
+			node=node.next
